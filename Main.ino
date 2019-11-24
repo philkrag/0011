@@ -25,9 +25,9 @@
 float Zone_1_Distance = 0; // IGNORE ZONE
 float Zone_2_Distance = 200; // REQUIRES ADJUSTMENT
 float Zone_3_Distance = 300; // CORRECT DISTANCE
-float Zone_4_Distance = 400; // CORRECT DISTANCE
-float Zone_5_Distance = 500; // REQURIES ADJUSTMENT
-float Zone_6_Distance = 700; // IGNORE ZONE
+float Zone_4_Distance = 310; // CORRECT DISTANCE
+float Zone_5_Distance = 400; // REQURIES ADJUSTMENT
+float Zone_6_Distance = 500; // IGNORE ZONE
 
 // /////////////////////////////////////////////////////////////////////// SYSTEM VARIABLES
 int Sensor_Trigger_1 = 3;                                                          // Ultra sonic sensor trigger pin.
@@ -112,7 +112,7 @@ void loop() {
 
 Flash_Operation();                                                                  // ...
 
-Flash_Operation_Direction();
+//Flash_Operation_Direction();
 
 Sensor_Distance_1 = Scan_Sensor(Sensor_Trigger_1, Sensor_Echo_1);
 Sensor_Distance_2 = Scan_Sensor(Sensor_Trigger_2, Sensor_Echo_2);
@@ -163,7 +163,7 @@ digitalWrite(7, LOW);
 }
 
 if(Indicator_Output == "Right - Zone 2-3"){
-digitalWrite(6, Flash_Sensor_1_Flag);
+digitalWrite(6, HIGH);
 digitalWrite(7, LOW);
 }
 
@@ -174,7 +174,7 @@ digitalWrite(7, HIGH);
 
 if(Indicator_Output == "Right - Zone 4-5"){
 digitalWrite(6, LOW);
-digitalWrite(7, Flash_Sensor_1_Flag);
+digitalWrite(7, HIGH);
 }
 
 if(Indicator_Output == "Right - Zone 5-6"){
@@ -201,19 +201,19 @@ if(Flash_Fast_Flag == true){Flash_Fast_Flag = false;}else{Flash_Fast_Flag = true
 }                                                                                   // ...
 
 
-void Flash_Operation_Direction(){
-float Ratio_1 = (Sensor_Distance_1 - Zone_2_Distance) / (Zone_3_Distance - Zone_2_Distance);
-int Flash_Sensor_1_Cycles = 20.0f * (1-Ratio_1);
-  Serial.print("-");  
-Serial.print(Flash_Sensor_1_Cycles);
-  Serial.print("-");
-if(Flash_Sensor_1_Index < Flash_Sensor_1_Cycles){Flash_Sensor_1_Index = Flash_Sensor_1_Index+1;}               // ...
-if(Flash_Sensor_1_Index >= Flash_Sensor_1_Cycles){                                             // ...
-Flash_Sensor_1_Index = 0;                                                                  // ...
-if(Flash_Sensor_1_Flag == true){Flash_Sensor_1_Flag = false;}else{Flash_Sensor_1_Flag = true;}  // ...
-}                                                                                   // ...
-
-}
+//void Flash_Operation_Direction(){
+//float Ratio_1 = (Sensor_Distance_1 - Zone_2_Distance) / (Zone_3_Distance - Zone_2_Distance);
+//int Flash_Sensor_1_Cycles = 20.0f * (1-Ratio_1);
+//  Serial.print("-");  
+//Serial.print(Flash_Sensor_1_Cycles);
+//  Serial.print("-");
+//if(Flash_Sensor_1_Index < Flash_Sensor_1_Cycles){Flash_Sensor_1_Index = Flash_Sensor_1_Index+1;}               // ...
+//if(Flash_Sensor_1_Index >= Flash_Sensor_1_Cycles){                                             // ...
+//Flash_Sensor_1_Index = 0;                                                                  // ...
+//if(Flash_Sensor_1_Flag == true){Flash_Sensor_1_Flag = false;}else{Flash_Sensor_1_Flag = true;}  // ...
+//}                                                                                   // ...
+//
+//}
 
 
 
